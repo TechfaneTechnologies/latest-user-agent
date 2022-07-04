@@ -16,6 +16,6 @@ jobs:
           python-version: '3.9.x'
       - run: python --version
       - run: pip install -r requirements.txt
-      - run: python update.py
+      - run: python update_user_agents.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
