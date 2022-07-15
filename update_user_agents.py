@@ -64,15 +64,16 @@ def json_dump(obj):
 def update_files_on_github(new_user_agents_json):
     gh = Github(os.environ['GITHUB_TOKEN'])
     repo = gh.get_repo(os.environ['GITHUB_REPOSITORY'])
-    for branch in ('main', 'gh-pages'):
-        f = repo.get_contents(user_agents_file_name, ref=branch)
-        repo.update_file(
-            f.path,
-            message=f'Update {user_agents_file_name} on {branch} branch',
-            content=new_user_agents_json,
-            sha=f.sha,
-            branch=branch,
-        )
+#     for branch in ('main', 'gh-pages'):
+    branch = 'main'
+    f = repo.get_contents(user_agents_file_name, ref=branch)
+    repo.update_file(
+        f.path,
+        message=f'Update {user_agents_file_name} on {branch} branch',
+        content=new_user_agents_json,
+        sha=f.sha,
+        branch=branch,
+    )
 
 if __name__ == '__main__':
     old_user_agents_json = json_dump(get_saved_user_agents())
