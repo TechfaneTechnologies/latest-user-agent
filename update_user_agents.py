@@ -44,6 +44,7 @@ def get_latest_user_agents():
     for browser in ("chrome", "firefox", "safari", "edge"):
         time.sleep(1)
         response = session.get("".join((base_url, browser)))
+        print(response.status_code, response.text)
         elems = html.fromstring(response.text).cssselect("td li span.code")
         browser_uas = []
         for elem in elems:
