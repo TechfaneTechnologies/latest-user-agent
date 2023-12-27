@@ -1,21 +1,21 @@
-name: Update Latest User Agents
-on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron:  '0 0 * * *'
-jobs:
-  build:
-    name: Update Latest User Agents
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11.x'
-      - run: python --version
-      - run: pip install -r requirements.txt
-      - run: python update_user_agents.py
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+# name: Update Latest User Agents
+# on:
+#   push:
+#     branches:
+#       - main
+#   schedule:
+#     - cron:  '0 0 * * *'
+# jobs:
+#   build:
+#     name: Update Latest User Agents
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.11.x'
+#       - run: python --version
+#       - run: pip install -r requirements.txt
+#       - run: python update_user_agents.py
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
